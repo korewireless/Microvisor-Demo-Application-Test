@@ -16,10 +16,6 @@ and then:
 cd Microvisor-Demo-Application-Test
 ```
 
-## Requirements
-
-You will need a Twilio account. [Sign up now if you don’t have one](https://www.twilio.com/try-twilio).
-
 ## Platform Support
 
 We currently support the following build platforms:
