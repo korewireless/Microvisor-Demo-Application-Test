@@ -1,0 +1,11 @@
+/**
+ *
+ * Microvisor Application Test Stub
+ *
+ * Copyright © 2023, KORE Wireless
+ * Licence: MIT
+ *
+ */
+#define APP_NAME        "@APP@"
+#define APP_VERSION     "@VERSION_NUMBER@"
+#define BUILD_NUM       @BUILD_NUMBER@
