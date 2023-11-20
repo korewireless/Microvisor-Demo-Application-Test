@@ -99,20 +99,6 @@ twilio plugins:install @twilio/plugin-microvisor
 
 The process outlined below requires Plugin 0.3.10 or above.
 
-### Log in to Twilio
-
-Run:
-
-```shell
-twilio login
-```
-
-Enter your account SID and your account Auth Token - which you can get from the [Twilio Console account dashboard](https://console.twilio.com/) - and provide a name (“shorthand identifier”) for your profile when asked to do so. Now run:
-
-```shell
-twilio profiles:use <YOUR_SHORTHAND_IDENTIFIER>
-```
-
 ## Build the application
 
 The the repo's root directory run:
