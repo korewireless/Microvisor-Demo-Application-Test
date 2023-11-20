@@ -18,3 +18,8 @@ jobs:
       run: docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t microvisor-app-test-image .
     - name: Build application code
       run: docker run --rm -v $(pwd)/:/home/mvisor/project/ --name microvisor-app-test-demo microvisor-app-test-image
+    - name: Upload bundle
+      uses: actions/upload-artifact@v3
+      with:
+        name: mv-app-test-stub-bundle
+        path: ${{ github.workspace }}/build/app/mv-app-test.zip
