@@ -33,10 +33,18 @@ int main(void) {
         When all your tests are complete, your code should call the Microvisor System Call
         `mvTestingComplete()` and pass in zero (`0`) to indicate that the tests passed, or
         any non-zero value to indicate that the one or more of the tests failed.
+
+        **IMPORTANT**
+        `mvTestingComplete()` will only operate in code running within a factory environment.
+        In all other cases, it will return `MV_STATUS_UNAVAILABLE`.
+
     */
 
-   uint32_t test_result = perform_tests();
-   mvTestingComplete(test_result);
+    uint32_t test_result = perform_tests();
+    enum MvStatus status = mvTestingComplete(test_result);
+    if (status == MV_STATUS_UNAVAILABLE) {
+        // Post a warning -- we are not in the factory
+    }
 }
 
 
