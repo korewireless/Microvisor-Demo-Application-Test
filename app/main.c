@@ -7,13 +7,12 @@
  *
  */
 #include "main.h"
-#include "app_version.h"
 
 
 /*
  * STATIC PROTOTYPES
  */
-uint32_t perform_tests(void);
+static uint32_t perform_tests(void);
 
 
 /**
@@ -36,15 +35,13 @@ int main(void) {
 
         **IMPORTANT**
         `mvTestingComplete()` will only operate in code running within a factory environment.
-        In all other cases, it will return `MV_STATUS_UNAVAILABLE`.
+        In all other cases, it will throw.
 
     */
 
     uint32_t test_result = perform_tests();
     enum MvStatus status = mvTestingComplete(test_result);
-    if (status == MV_STATUS_UNAVAILABLE) {
-        // Post a warning -- we are not in the factory
-    }
+    assert (status != MV_STATUS_UNAVAILABLE);
 }
 
 
@@ -54,7 +51,20 @@ int main(void) {
  * @returns An unsigned integer status code: `0` for success,
  *          any other value for failure.
  */
-uint32_t perform_tests(void) {
+static uint32_t perform_tests(void) {
 
     return APP_TESTS_TESTS_PASSED;
+}
+
+
+/**
+ * @brief Get the MV clock value.
+ *
+ * @retval The clock value.
+ */
+uint32_t SECURE_SystemCoreClockUpdate() {
+
+    uint32_t clock = 0;
+    mvGetHClk(&clock);
+    return clock;
 }
