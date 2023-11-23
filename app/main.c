@@ -20,7 +20,7 @@ static uint32_t perform_tests(void);
  */
 int main(void) {
 
-    // Reset of all peripherals, Initializes the Flash interface and the sys tick.
+    // Reset all peripherals, Initializes the Flash interface and the sys tick.
     HAL_Init();
 
     /*
@@ -40,6 +40,12 @@ int main(void) {
     */
 
     uint32_t test_result = perform_tests();
+
+    uint32_t now = HAL_GetTick();
+    while (HAL_GetTick() - now < 10000) {
+        __asm("nop");
+    }
+
     enum MvStatus status = mvTestingComplete(test_result);
     assert (status != MV_STATUS_UNAVAILABLE);
 }
