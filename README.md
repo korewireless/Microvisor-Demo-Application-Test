@@ -95,7 +95,7 @@ twilio plugins:install @twilio/plugin-microvisor
 
 The process outlined below requires Plugin 0.3.10 or above.
 
-## Build the application
+## Build and sign the application
 
 The the repo's root directory run:
 
@@ -105,10 +105,18 @@ cmake --build build
 twilio microvisor:apps:bundle build/app/mv-app-test.bin build/app/mv-app-test.zip
 ```
 
-This will build and bundle the code. The bundle is written to `build/app/mv-app-test.zip` and is intended to be consume by the factory process' SPI flash image build stage.
+This will build and bundle the code. The bundle is written to `build/app/mv-app-test.zip`.
+
+The bundle must now be signed. Run:
+
+```bash
+twilio microvisor:apps:create build/app/mv-app-test.zip --bundle-out build/app/mv-app-test-signed.zip
+```
+
+The signed bundle is written to `build/app/mv-app-test-signed.zip` and is intended to be consumed by the factory process' SPI flash image build stage.
 
 ## Copyright and Licensing
 
-The sample code and Microvisor SDK are © 2023, KORE Wireless. It is licensed under the terms of the [MIT License](./LICENSE.md).
+The sample code and Microvisor SDK are © 2024, KORE Wireless. It is licensed under the terms of the [MIT License](./LICENSE.md).
 
 The SDK makes used of code © 2022, STMicroelectronics and affiliates. This code is licensed under terms described in [this file](https://github.com/twilio/twilio-microvisor-hal-stm32u5/blob/main/LICENSE-STM32CubeU5.md).
