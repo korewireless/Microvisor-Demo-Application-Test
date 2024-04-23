@@ -3,8 +3,8 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  build_linux_native:
-    name: Build on Linux with native tools
+  build_linux_docker:
+    name: Build on Linux with docker
     runs-on: ubuntu-latest
     steps:
     - name: Get application code
