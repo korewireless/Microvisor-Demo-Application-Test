@@ -3,8 +3,8 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  Build:
-    name: Build
+  build_linux_native:
+    name: Build on Linux with native tools
     runs-on: ubuntu-latest
     steps:
     - name: Get application code
@@ -19,7 +19,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: mv-app-test-stub-linux-docker
-        path: ${{ github.workspace }}/build/app/mv-app-test.zip
+        path: ${{ github.workspace }}/build/app/mv-app-test.*
   build_linux_native:
     name: Build on Linux with native tools
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: mv-app-test-stub-linux-native
-        path: ${{ github.workspace }}/build/app/mv-app-test.zip
+        path: ${{ github.workspace }}/build/app/mv-app-test.*
   build_win_wsl:
     name: Build on Windows with WSL
     runs-on: windows-latest
@@ -60,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: mv-app-test-stub-win-wsl
-        path: ${{ github.workspace }}/build/app/mv-app-test.zip
+        path: ${{ github.workspace }}/build/app/mv-app-test.*
   build_mac_native:
     name: Build on macOS with native tooling
     runs-on: macos-latest
@@ -77,4 +77,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: mv-app-test-stub-mac-native
-        path: ${{ github.workspace }}/build/app/mv-app-test.zip
+        path: ${{ github.workspace }}/build/app/mv-app-test.*
